@@ -9,10 +9,10 @@ import { InfoBar } from 'components';
 // import { routeActions } from 'react-router-redux';
 import config from '../../config';
 
+// pushState: PropTypes.func.isRequired
 export default class App extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
-    pushState: PropTypes.func.isRequired
+    children: PropTypes.object.isRequired
   };
 
   static contextTypes = {
