@@ -1,0 +1,4 @@
+nginx:
+  volumes:
+    - /www/static
+    - ./nginx/prod.nginx.conf:/etc/nginx/nginx.conf:ro

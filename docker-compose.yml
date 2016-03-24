@@ -1,0 +1,14 @@
+node:
+  restart: always
+  build: ./node
+  expose:
+    - "8080"
+
+nginx:
+  build: ./nginx
+  links:
+    - node:node
+  ports:
+    - "80:80"
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
