@@ -1,2 +1,2 @@
 # sumit
-Web app that counts and records profile clicks.
+Web app for recording and displaying profile clicks.
