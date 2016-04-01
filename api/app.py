@@ -2,6 +2,8 @@ from flask import Flask, redirect, url_for, request, render_template, abort, mak
 from flask_restful import Api, Resource
 from config import DevConfig
 
+from Twitter.client import query_users
+
 app = Flask(__name__)
 # default dev config settings
 app.config.from_object(DevConfig)
@@ -24,22 +26,24 @@ def after_request(response):
 
 @app.route('/')
 def default():
-    return 'WEB index view'
+    return 'API index view'
 
 #--- API ---#
 #############
 
-class Info(Resource):
+
+class Search(Resource):
     """
     Default API resource
     """
-    def get(self, param_str):
-        if param_str:
-            return {'param_str': param_str}
+    def get(self, query, page):
+        if query:
+            result = query_users(query, page)
+            return result
         else:
             abort(404)
 
-api.add_resource(Info, '/info/<string:param_str>', endpoint='info')
+api.add_resource(Search, '/search/<string:query>/<int:page>', endpoint='search')
 
 
 if __name__ == "__main__":
