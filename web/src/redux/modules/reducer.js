@@ -6,6 +6,7 @@ import {reducer as reduxAsyncConnect} from 'redux-async-connect';
 import counter from './counter';
 import info from './info';
 import users from './users';
+import query from './query';
 
 export default combineReducers({
   routing: routeReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     counter3: counter
   }),
   info,
+  query,
   users
 });

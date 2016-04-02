@@ -20,3 +20,16 @@
 .appContent {
   margin: 50px 0; // for fixed navbar
 }
+
+.appFooter {
+  width: 100%;
+  position:fixed;
+  bottom:0;
+  left:0;
+  .footerText {
+    border-top: 1px solid #e5e5e5;
+    padding: 15px;
+    background-color: whitesmoke;
+    text-align: center;
+  }
+}
