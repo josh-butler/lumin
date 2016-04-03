@@ -4,7 +4,7 @@ import json
 from flask import Flask, redirect, url_for, request, render_template, abort, make_response, jsonify
 from flask_restful import Api, Resource
 from config import DevConfig
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 from bson.json_util import dumps
 
 from Twitter.client import query_users
@@ -44,6 +44,16 @@ def default():
 #############
 
 
+class ProfileList(Resource):
+    """
+    Get a list of all recorded profiles sorted by click count
+    """
+    def get(self):
+        cursor = profiles.find({}, {'_id': 0}).sort([("count", DESCENDING)])
+        id_list = [json.loads(dumps(item)) for item in cursor]
+        return id_list
+
+
 class Search(Resource):
     """
     Default API resource
@@ -58,28 +68,26 @@ class Search(Resource):
 
 class ProfileCounter(Resource):
     """
-    Insert and retrieve mongo documents by gml_id
+    Insert and retrieve mongo documents by id_str
     """
 
-    # def get(self, gml_id):
-    #     if gml_id:
-    #         query_bson = json_collection.find_one({"root_gml_id": gml_id})
-    #         if query_bson:
-    #             # decode bson to string with bson.util
-    #             dumped_data = dumps(query_bson)
-    #             resp = json.loads(dumped_data)
-    #             return resp
-    #     else:
-    #         abort(404)
+    def get(self, id_str):
+        if id_str:
+            query_bson = profiles.find_one({"id_str": id_str}, {'_id': 0})
+            if query_bson:
+                dumped_data = dumps(query_bson)
+                resp = json.loads(dumped_data)
+                return resp
+        else:
+            abort(404)
 
-    # TODO store full user json data mongo
     def post(self, id_str):
         if id_str:
             query_bson = profiles.find_one({"id_str": id_str})
             if query_bson:
                 profiles.update({"id_str": id_str}, {'$inc': {'count': 1}})
             else:
-                profiles.insert_one({"id_str": id_str, "count": 1})
+                profiles.insert_one({"id_str": id_str, "count": 1, "data": request.json.get('data')})
 
             query_bson = profiles.find_one({"id_str": id_str})
             dumped_data = dumps(query_bson)
@@ -91,6 +99,7 @@ class ProfileCounter(Resource):
 
 api.add_resource(Search, '/search/<string:query>/<int:per_page>/<int:page>', endpoint='search')
 api.add_resource(ProfileCounter, '/increment/<string:id_str>', endpoint='increment_profile')
+api.add_resource(ProfileList, '/profile-list', endpoint='profile_list')
 
 
 if __name__ == "__main__":
