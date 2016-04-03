@@ -7,7 +7,7 @@ import { Button, ButtonGroup, ButtonToolbar, ListGroup, ListGroupItem } from 're
 import { routeActions } from 'react-router-redux';
 import { fetchUsers } from 'redux/modules/users';
 
-const perPage = 5;
+import { PER_PAGE } from '../../constants/index';
 
 @asyncConnect([{
   promise: ({store: {dispatch}, params: {query, page}}) => {
@@ -85,7 +85,7 @@ export default class Profiles extends Component {
   }
 
   renderNextButton() {
-    if (this.props.users.length > perPage - 1) {
+    if (this.props.users.length > PER_PAGE - 1) {
       const {query, page} = this.props.params;
       const nextPage = `/profiles/${query}/${parseInt(page, 10) + 1}`;
       return <Button onClick={() => {this.props.pushState(nextPage);}}>Next</Button>;

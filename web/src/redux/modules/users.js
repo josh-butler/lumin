@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { TWITTER_API_URL } from '../../constants/index';
+import { PER_PAGE, TWITTER_API_URL } from '../../constants/index';
 
 const FETCH = 'users/FETCH';
 const FETCH_SUCCESS = 'users/FETCH_SUCCESS';
@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action = {}) {
 
 /* Actions */
 export function fetchUsers(query, page) {
-  const url = `${TWITTER_API_URL}/search/${query}/${page}`;
+  const url = `${TWITTER_API_URL}/search/${query}/${PER_PAGE}/${page}`;
   return {
     types: [FETCH, FETCH_SUCCESS, FETCH_FAIL],
     promise: () => axios.get(url)
