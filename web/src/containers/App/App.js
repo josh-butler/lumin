@@ -39,8 +39,8 @@ export default class App extends Component {
               <LinkContainer to="/search">
                 <NavItem eventKey={2}>Search</NavItem>
               </LinkContainer>
-              <LinkContainer to="/survey">
-                <NavItem eventKey={3}>Clicks Report</NavItem>
+              <LinkContainer to="/report">
+                <NavItem eventKey={3}>Click Report</NavItem>
               </LinkContainer>
               <NavItem eventKey={4} target="_blank" href="https://www.linkedin.com/in/joshua-butler-b2151b98">About Us</NavItem>
             </Nav>

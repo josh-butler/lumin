@@ -3,6 +3,7 @@ import multireducer from 'multireducer';
 import { routeReducer } from 'react-router-redux';
 import {reducer as reduxAsyncConnect} from 'redux-async-connect';
 
+import clicks from './clicks';
 import counter from './counter';
 import info from './info';
 import users from './users';
@@ -16,6 +17,7 @@ export default combineReducers({
     counter2: counter,
     counter3: counter
   }),
+  clicks,
   info,
   query,
   users
