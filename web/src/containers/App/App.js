@@ -58,7 +58,7 @@ export default class App extends Component {
 
         <div className={styles.appFooter}>
           <div className={styles.footerText}>
-            Want to see the code? Check it out on Github <a
+            Want to see the code? Check it out <a
             href="https://github.com/josh-butler/sumit"
             target="_blank">on Github</a>
           </div>
