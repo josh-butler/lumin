@@ -113,9 +113,9 @@ export default class Profiles extends Component {
           { this.renderProfileList() }
         </ListGroup>
         <div className={styles.buttonsContainer}>
-        <ButtonToolbar>
-          { this.renderPageButtons()}
-        </ButtonToolbar>
+          <ButtonToolbar>
+            { this.renderPageButtons()}
+          </ButtonToolbar>
         </div>
       </div>
     );
