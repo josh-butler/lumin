@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 import { PER_PAGE, TWITTER_API_URL } from '../../constants/index';
-// import { PER_PAGE } from '../../constants/index';
-// TWITTER_API_URL = `http://${process.env.API_1_PORT_4000_TCP_ADDR}:4000`;
 
 const FETCH = 'users/FETCH';
 const FETCH_SUCCESS = 'users/FETCH_SUCCESS';

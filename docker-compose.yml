@@ -10,7 +10,6 @@ nginx:
   build: ./nginx
   links:
     - web:web
-    - api:api
   ports:
     - "80:80"
   volumes:
