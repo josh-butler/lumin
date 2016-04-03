@@ -5,7 +5,7 @@ import { Button, ButtonGroup, ButtonToolbar, ListGroup, ListGroupItem } from 're
 
 /* Actions */
 import { routeActions } from 'react-router-redux';
-import { fetchUsers } from 'redux/modules/users';
+import { fetchUsers, postUser } from 'redux/modules/users';
 
 import { PER_PAGE } from '../../constants/index';
 
@@ -20,12 +20,14 @@ import { PER_PAGE } from '../../constants/index';
   state => ({ users: state.users.data, query: state.query }),
   {
     fetchUsers,
+    postUser,
     pushState: routeActions.push
   }
 )
 export default class Profiles extends Component {
   static propTypes = {
     fetchUsers: PropTypes.func,
+    postUser: PropTypes.func,
     users: PropTypes.array,
     pushState: PropTypes.func,
     params: PropTypes.object
@@ -70,6 +72,7 @@ export default class Profiles extends Component {
 
   handleProfileClick(user) {
     console.log('clicked', user.screen_name);
+    this.props.postUser(user);
     // TODO POST data to API
 
     // TODO Redirect to profile page
