@@ -44,7 +44,6 @@ export default class UserSearch extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.value);
 
     if (this.state.inputValid) {
       this.props.updateQuery(this.state.value);

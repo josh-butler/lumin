@@ -22,8 +22,7 @@ export default function reducer(state = initialState, action = {}) {
         loaded: false
       };
     case FETCH_SUCCESS:
-      console.log('Fetch clicks succeeded');
-      // const data = action.result.data ? action.result.data : {};
+      // console.log('Fetch clicks succeeded');
       return {
         ...state,
         ...action.result,
