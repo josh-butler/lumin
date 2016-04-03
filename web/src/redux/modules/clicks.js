@@ -15,7 +15,7 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case FETCH:
-      console.log('Fetching clicks');
+      // console.log('Fetching clicks');
       return {
         ...state,
         loading: true,
@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
         loaded: true
       };
     case FETCH_FAIL:
-      console.log('Fetch clicks failed');
+      // console.log('Fetch clicks failed');
       return {
         ...state,
         loading: false,

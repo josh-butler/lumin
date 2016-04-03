@@ -18,15 +18,14 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case FETCH:
-      console.log('Fetching users');
+      // console.log('Fetching users');
       return {
         ...state,
         loading: true,
         loaded: false
       };
     case FETCH_SUCCESS:
-      console.log('Fetch succeeded');
-      // const data = action.result.data ? action.result.data : {};
+      // console.log('Fetch succeeded');
       return {
         ...state,
         ...action.result,
@@ -48,8 +47,7 @@ export default function reducer(state = initialState, action = {}) {
         loaded: false
       };
     case POST_SUCCESS:
-      console.log('POST succeeded');
-      // const data = action.result.data ? action.result.data : {};
+      // console.log('POST succeeded');
       return {
         ...state,
         posted: [...action.result],
