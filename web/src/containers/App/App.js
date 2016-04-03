@@ -26,7 +26,7 @@ export default class App extends Component {
         <Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
+              <IndexLink to="/" activeStyle={{color: '#777'}}>
                 <div className={styles.brand}/>
                 <span>{config.app.title}</span>
               </IndexLink>
@@ -36,18 +36,16 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              <LinkContainer to="/widgets">
-                <NavItem eventKey={2}>Widgets</NavItem>
+              <LinkContainer to="/search">
+                <NavItem eventKey={2}>Search</NavItem>
               </LinkContainer>
               <LinkContainer to="/survey">
-                <NavItem eventKey={3}>Survey</NavItem>
+                <NavItem eventKey={3}>Clicks Report</NavItem>
               </LinkContainer>
-              <LinkContainer to="/about">
-                <NavItem eventKey={4}>About Us</NavItem>
-              </LinkContainer>
+              <NavItem eventKey={4} target="_blank" href="https://www.linkedin.com/in/joshua-butler-b2151b98">About Us</NavItem>
             </Nav>
             <Nav navbar pullRight>
-              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
+              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/josh-butler/sumit">
                 <i className="fa fa-github"/>
               </NavItem>
             </Nav>
@@ -60,10 +58,9 @@ export default class App extends Component {
 
         <div className={styles.appFooter}>
           <div className={styles.footerText}>
-            Have questions? Ask for help <a
-            href="https://github.com/erikras/react-redux-universal-hot-example/issues"
-            target="_blank">on Github</a> or in the <a
-            href="https://discord.gg/0ZcbPKXt5bZZb1Ko" target="_blank">#react-redux-universal</a> Discord channel.
+            Want to see the code? Check it out on Github <a
+            href="https://github.com/josh-butler/sumit"
+            target="_blank">on Github</a>
           </div>
         </div>
       </div>

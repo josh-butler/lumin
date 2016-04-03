@@ -43,39 +43,9 @@ export default class Profiles extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //  const searchObj = nextProps.users;
-  //  const users = [];
-  //  // Add search suggestions to array
-  //  // Autosuggest render requires an obj array
-  //  for (const key in searchObj) {
-  //    if (searchObj.hasOwnProperty(key)) {
-  //      users.push(searchObj[key]);
-  //    }
-  //  }
-  //  this.setState({users: users});
-  // }
-
-  // onChange = () => {
-  //  const newValue = this.refs.input.getValue();
-  //  this.setState({value: newValue});
-  // }
-  //
-  // onSubmit = () => {
-  //  console.log(this.state.value);
-  //  this.props.fetchUsers(this.state.value, 1);
-  // }
-
-  // alertClicked() {
-  //  alert('You clicked the third ListGroupItem');
-  // }
-
   handleProfileClick(user) {
-    console.log('clicked', user.screen_name);
     this.props.postUser(user);
-    // TODO POST data to API
-
-    // TODO Redirect to profile page
+    window.open(`https://twitter.com/${user.screen_name}`, '_blank');
   }
 
   renderPrevButton() {
@@ -118,11 +88,7 @@ export default class Profiles extends Component {
   }
 
   renderProfileList() {
-    // const searchObj = this.props.users.slice(0, -1);
     const searchObj = this.props.users;
-    // if (searchObj.length > 1) {
-    //  searchObj.pop();
-    // }
     const users = [];
     for (const key in searchObj) {
       if (searchObj.hasOwnProperty(key)) {
@@ -155,4 +121,3 @@ export default class Profiles extends Component {
     );
   }
 }
-// <ListGroupItem key={ user.id_str } target="_blank" href={`https://twitter.com/${user.screen_name}`}><strong>{ user.screen_name }</strong></ListGroupItem>

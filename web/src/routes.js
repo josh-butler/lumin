@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import {IndexRoute, Redirect, Route} from 'react-router';
 import {
     App,
     UserSearch,
@@ -12,7 +12,7 @@ export default () => {
     <Route path="/" component={App}>
       { /* Home (main) route */ }
       <IndexRoute component={UserSearch}/>
-
+      <Redirect from="/search" to="/" />
       <Route path="profiles/:query/:page" component={Profiles}/>
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
