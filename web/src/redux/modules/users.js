@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action = {}) {
         loaded: false
       };
     case POST:
-      console.log('POSTing users');
+      // console.log('POSTing users');
       return {
         ...state,
         loading: true,
