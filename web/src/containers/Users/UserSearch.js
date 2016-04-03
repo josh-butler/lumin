@@ -25,28 +25,44 @@ export default class UserSearch extends Component {
     super(props);
 
     this.state = {
-      value: ''
+      value: '',
+      inputValid: false,
+      bsStyle: null,
+      inputLabel: ''
     };
   }
 
   onChange = () => {
     const newValue = this.refs.input.getValue();
-    this.setState({value: newValue});
+    this.setState({
+      value: newValue,
+      inputValid: newValue.length > 2,
+      bsStyle: null,
+      inputLabel: ''
+    });
   }
 
-  onSubmit = () => {
+  onSubmit = (event) => {
+    event.preventDefault();
     console.log(this.state.value);
-    // this.props.fetchUsers(this.state.value, 1);
-    this.props.updateQuery(this.state.value);
-    this.props.pushState(`/profiles/${this.state.value}/1`);
+
+    if (this.state.inputValid) {
+      this.props.updateQuery(this.state.value);
+      this.props.pushState(`/profiles/${this.state.value}/1`);
+    } else {
+      this.setState({
+        bsStyle: 'error',
+        inputLabel: 'You must enter at least 3 characters'
+      });
+    }
   }
 
   render() {
     const styles = require('./UserSearch.scss');
     return (
       <div className={styles.searchContainer}>
-        <form className={styles.formGroup}>
-          <Input type="text" ref="input" onChange={this.onChange} />
+        <form className={styles.formGroup} onSubmit={this.onSubmit}>
+          <Input bsStyle={this.state.bsStyle} label={this.state.inputLabel} type="text" ref="input" onChange={this.onChange} />
           <Button bsStyle="primary" onClick={this.onSubmit}>Search Users</Button>
         </form>
       </div>
