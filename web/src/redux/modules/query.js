@@ -1,23 +1,24 @@
-const INCREMENT = 'redux-example/counter/INCREMENT';
+const UPDATE = 'query/UPDATE';
 
 const initialState = {
-  count: 0
+  query: ''
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case INCREMENT:
-      const {count} = state;
+    case UPDATE:
       return {
-        count: count + 1
+        ...state,
+        query: action.payload
       };
     default:
       return state;
   }
 }
 
-export function increment() {
+export function updateQuery(query) {
   return {
-    type: INCREMENT
+    type: UPDATE,
+    payload: query
   };
 }
