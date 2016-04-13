@@ -20,8 +20,6 @@ api:
   build: ./api
   environment:
     WEB_SETTINGS: /usr/settings/settings.cfg
-  env_file:
-    - ../settings/api.env
   ports:
     - "4000:4000"
   volumes:

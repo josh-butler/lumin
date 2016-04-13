@@ -15,8 +15,8 @@ module.exports = Object.assign({
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT,
   app: {
-    title: 'Twitter Clicks',
-    description: 'Twitter search and profile click recorder.',
+    title: 'Request Q',
+    description: 'App for submitting feature requests.',
     head: {
       titleTemplate: 'React Redux: %s',
       meta: [

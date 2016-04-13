@@ -2,19 +2,17 @@ import React from 'react';
 import {IndexRoute, Redirect, Route} from 'react-router';
 import {
     App,
+    Home,
     Report,
-    NotFound,
-    Profiles,
-    UserSearch,
+    NotFound
 } from 'containers';
 
 export default () => {
   return (
     <Route path="/" component={App}>
       { /* Home (main) route */ }
-      <IndexRoute component={UserSearch}/>
+      <IndexRoute component={Home}/>
       <Redirect from="/search" to="/" />
-      <Route path="profiles/:query/:page" component={Profiles}/>
       <Route path="report" component={Report}/>
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />

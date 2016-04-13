@@ -4,19 +4,19 @@ import { Button, Input } from 'react-bootstrap';
 
 /* Actions */
 import { routeActions } from 'react-router-redux';
-import { updateQuery } from 'redux/modules/query';
+// import { updateQuery } from 'redux/modules/query';
 
 
 @connect(
   state => ({ users: state.users.data }),
   {
-    updateQuery,
+    // updateQuery,
     pushState: routeActions.push
   }
 )
 export default class UserSearch extends Component {
   static propTypes = {
-    updateQuery: PropTypes.func,
+    // updateQuery: PropTypes.func,
     users: PropTypes.array,
     pushState: PropTypes.func
   }
@@ -46,7 +46,7 @@ export default class UserSearch extends Component {
     event.preventDefault();
 
     if (this.state.inputValid) {
-      this.props.updateQuery(this.state.value);
+      // this.props.updateQuery(this.state.value);
       this.props.pushState(`/profiles/${this.state.value}/1`);
     } else {
       this.setState({
@@ -57,7 +57,7 @@ export default class UserSearch extends Component {
   }
 
   render() {
-    const styles = require('./UserSearch.scss');
+    const styles = require('./Home.scss');
     return (
       <div className={styles.searchContainer}>
         <form className={styles.formGroup} onSubmit={this.onSubmit}>
@@ -68,4 +68,3 @@ export default class UserSearch extends Component {
     );
   }
 }
-

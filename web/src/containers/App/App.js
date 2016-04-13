@@ -45,7 +45,7 @@ export default class App extends Component {
               <NavItem eventKey={4} target="_blank" href="https://www.linkedin.com/in/joshua-butler-b2151b98">About Us</NavItem>
             </Nav>
             <Nav navbar pullRight>
-              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/josh-butler/sumit">
+              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/josh-butler/lumin">
                 <i className="fa fa-github"/>
               </NavItem>
             </Nav>
@@ -59,7 +59,7 @@ export default class App extends Component {
         <div className={styles.appFooter}>
           <div className={styles.footerText}>
             Want to see the code? Check it out <a
-            href="https://github.com/josh-butler/sumit"
+            href="https://github.com/josh-butler/lumin"
             target="_blank">on Github</a>
           </div>
         </div>

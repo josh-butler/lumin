@@ -5,12 +5,11 @@
     top: 5px;
     left: 5px;
     display: inline-block;
-    background: url('./twitter-icon.png') no-repeat center center;
-    width: $size;
+    background: url('./rubiks_cube_simple.svg') no-repeat center center;
+    width: 34px;
     height: $size;
     background-size: 100%;
-    margin: 0 10px 0 0;
-    border-radius: $size / 2;
+    margin: 0 10px 0 10px;
   }
   nav :global(.fa) {
     font-size: 2em;
@@ -32,4 +31,8 @@
     background-color: whitesmoke;
     text-align: center;
   }
+}
+
+.navbar-brand {
+  padding-left: 60px !important;
 }
