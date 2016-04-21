@@ -1,9 +1,21 @@
-.searchContainer {
-  width: 100%;
-  max-width: 400px;
+.homeContainer {
   margin: 0 auto;
   padding: 0 20px;
   .formGroup {
     margin-top: 100px;
+    .container {
+      width: 500px !important;
+    }
+  }
+}
+
+.dateLabel {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+
+  & .has-error {
+    color: #a94442;
+    color: #000;
   }
 }
