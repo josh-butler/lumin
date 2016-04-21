@@ -44,6 +44,7 @@ export default class UserSearch extends Component {
       ticketUrlValue: '',
       ticketUrlLabel: 'Ticket URL',
       ticketUrlIsValid: false,
+      descriptionValue: '',
       labelStyle: {marginBottom: '5px', fontWeight: 'bold', fontSize: '14px', color: '#000'}
     };
   }
@@ -55,6 +56,14 @@ export default class UserSearch extends Component {
       titleIsValid: newValue.length > 2,
       titleBsStyle: null,
       titleLabel: 'Title'
+    });
+  }
+
+
+  onDescriptionChange = (event) => {
+    const newValue = event.target.value;
+    this.setState({
+      descriptionValue: newValue,
     });
   }
 
@@ -123,6 +132,7 @@ export default class UserSearch extends Component {
     if (inputValid.every((input) => {return input;})) {
       const formData = {
         titleValue: this.state.titleValue,
+        descriptionValue: this.state.descriptionValue,
         priorityValue: this.state.priorityValue,
         clientValue: this.state.clientValue,
         productValue: this.state.productValue,
@@ -191,7 +201,7 @@ export default class UserSearch extends Component {
 
         <Row className="show-grid">
           <Col xs={12} sm={6} smPush={3}>
-            <Input type="textarea" label="Description" placeholder="Description" />
+            <Input type="textarea" label="Description" placeholder="Description" onChange={ this.onDescriptionChange }/>
           </Col>
         </Row>
 
