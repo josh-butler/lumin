@@ -3,7 +3,7 @@ import { routeReducer } from 'react-router-redux';
 import {reducer as reduxAsyncConnect} from 'redux-async-connect';
 
 import clicks from './clicks';
-import users from './users';
+import requests from './requests';
 import query from './query';
 
 export default combineReducers({
@@ -11,5 +11,5 @@ export default combineReducers({
   reduxAsyncConnect,
   clicks,
   query,
-  users
+  requests
 });

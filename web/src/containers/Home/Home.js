@@ -4,20 +4,20 @@ import { Button, Input, Grid, Row, Col } from 'react-bootstrap';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 /* Actions */
 import { routeActions } from 'react-router-redux';
-// import { updateQuery } from 'redux/modules/query';
+import { postRequest } from 'redux/modules/requests';
 
 
 @connect(
-  state => ({ users: state.users.data }),
+  state => ({ requests: state.requests.data }),
   {
-    // updateQuery,
+    postRequest,
     pushState: routeActions.push
   }
 )
-export default class UserSearch extends Component {
+export default class Home extends Component {
   static propTypes = {
-    // updateQuery: PropTypes.func,
-    users: PropTypes.array,
+    postRequest: PropTypes.func,
+    requests: PropTypes.object,
     pushState: PropTypes.func
   }
 
@@ -131,16 +131,17 @@ export default class UserSearch extends Component {
 
     if (inputValid.every((input) => {return input;})) {
       const formData = {
-        titleValue: this.state.titleValue,
-        descriptionValue: this.state.descriptionValue,
-        priorityValue: this.state.priorityValue,
-        clientValue: this.state.clientValue,
-        productValue: this.state.productValue,
-        dateValue: this.state.dateValue,
-        ticketUrlValue: this.state.ticketUrlValue
+        title: this.state.titleValue,
+        description: this.state.descriptionValue,
+        priority: this.state.priorityValue,
+        client: this.state.clientValue,
+        product: this.state.productValue,
+        date: this.state.dateValue,
+        ticketUrl: this.state.ticketUrlValue
       };
       // TODO post action here
       console.log(formData);
+      this.props.postRequest(formData);
     } else {
       this.setState({
         titleBsStyle: this.state.titleIsValid ? 'success' : 'error',

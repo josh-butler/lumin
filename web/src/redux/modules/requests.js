@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import { PER_PAGE, TWITTER_API_URL } from '../../constants/index';
+import { PER_PAGE, TWITTER_API_URL, REQUEST_API_URL } from '../../constants/index';
 
-const FETCH = 'users/FETCH';
-const FETCH_SUCCESS = 'users/FETCH_SUCCESS';
-const FETCH_FAIL = 'users/FETCH_FAIL';
-const POST = 'users/POST';
-const POST_SUCCESS = 'users/POST_SUCCESS';
-const POST_FAIL = 'users/POST_FAIL';
+const FETCH = 'requests/FETCH';
+const FETCH_SUCCESS = 'requests/FETCH_SUCCESS';
+const FETCH_FAIL = 'requests/FETCH_FAIL';
+const POST = 'requests/POST';
+const POST_SUCCESS = 'requests/POST_SUCCESS';
+const POST_FAIL = 'requests/POST_FAIL';
 
 /* Reducers */
 const initialState = {
@@ -18,7 +18,7 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case FETCH:
-      // console.log('Fetching users');
+      // console.log('Fetching requests');
       return {
         ...state,
         loading: true,
@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action = {}) {
         loaded: false
       };
     case POST:
-      // console.log('POSTing users');
+      // console.log('POSTing requests');
       return {
         ...state,
         loading: true,
@@ -50,7 +50,7 @@ export default function reducer(state = initialState, action = {}) {
       // console.log('POST succeeded');
       return {
         ...state,
-        posted: [...action.result],
+        ...action.result,
         loading: false,
         loaded: true
       };
@@ -67,7 +67,7 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 /* Actions */
-export function fetchUsers(query, page) {
+export function fetchRequests(query, page) {
   const url = `${TWITTER_API_URL}/search/${query}/${PER_PAGE}/${page}`;
   return {
     types: [FETCH, FETCH_SUCCESS, FETCH_FAIL],
@@ -75,10 +75,10 @@ export function fetchUsers(query, page) {
   };
 }
 
-export function postUser(user) {
-  const url = `${TWITTER_API_URL}/increment/${user.id_str}`;
+export function postRequest(request) {
+  const url = `${REQUEST_API_URL}/feature-request`;
   return {
     types: [POST, POST_SUCCESS, POST_FAIL],
-    promise: () => axios.post(url, {data: user})
+    promise: () => axios.post(url, {data: request})
   };
 }
