@@ -13,7 +13,7 @@ export default () => {
       { /* Home (main) route */ }
       <IndexRoute component={Home}/>
       <Redirect from="/search" to="/" />
-      <Route path="report" component={Report}/>
+      <Route path="/report/:id" component={Report}/>
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
     </Route>

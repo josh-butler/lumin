@@ -36,11 +36,17 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              <LinkContainer to="/search">
-                <NavItem eventKey={2}>Search</NavItem>
+              <LinkContainer to="/">
+                <NavItem eventKey={2}>New Request</NavItem>
               </LinkContainer>
-              <LinkContainer to="/report">
-                <NavItem eventKey={3}>Click Report</NavItem>
+              <LinkContainer to="/report/a">
+                <NavItem eventKey={3}>Client A</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/report/b">
+                <NavItem eventKey={3}>Client B</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/report/c">
+                <NavItem eventKey={3}>Client C</NavItem>
               </LinkContainer>
               <NavItem eventKey={4} target="_blank" href="https://www.linkedin.com/in/joshua-butler-b2151b98">About Us</NavItem>
             </Nav>

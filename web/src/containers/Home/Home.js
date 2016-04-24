@@ -17,7 +17,7 @@ import { postRequest } from 'redux/modules/requests';
 export default class Home extends Component {
   static propTypes = {
     postRequest: PropTypes.func,
-    requests: PropTypes.object,
+    requests: PropTypes.array,
     pushState: PropTypes.func
   }
 

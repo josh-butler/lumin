@@ -5,67 +5,69 @@ import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 /* Actions */
 import { routeActions } from 'react-router-redux';
-import { fetchClicks } from 'redux/modules/clicks';
+import { fetchRequests } from 'redux/modules/requests';
+
 
 @asyncConnect([{
-  promise: ({store: {dispatch}}) => {
+  promise: ({store: {dispatch}, params: {id}}) => {
     const promises = [];
-    promises.push(dispatch(fetchClicks()));
+    promises.push(dispatch(fetchRequests(id)));
     return Promise.all(promises);
   }
 }])
 @connect(
-  state => ({ clicks: state.clicks.data }),
+  state => ({ requests: state.requests.data }),
   {
-    fetchClicks,
+    fetchRequests,
     pushState: routeActions.push
   }
 )
 export default class Report extends Component {
   static propTypes = {
     fetchClicks: PropTypes.func,
-    clicks: PropTypes.array,
-    pushState: PropTypes.func
+    requests: PropTypes.array,
+    pushState: PropTypes.func,
+    params: PropTypes.object
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      clicks: []
+      requests: []
     };
   }
 
-  renderProfile(user) {
+  renderProfile(req) {
     return (
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <div style={{display: 'flex', justifyContent: 'flex-start'}}>
-          <img src={ user.data.profile_image_url } alt="profile img" height="32" width="32" />
           <span>
-            <div style={{padding: '0 10px', 'fontWeight': '600'}}>{ `@${user.data.screen_name}` }</div>
-            <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ user.data.location }</div>
+            <div style={{padding: '0 10px', 'fontWeight': '600'}}>{ req.title }</div>
+            <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ req.product }</div>
+            <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ req.ticketUrl }</div>
           </span>
         </div>
         <div style={{height: '100%', justifySelf: 'flex-end'}}>
-          <Button bsStyle="primary" bsSize="xsmall">{ user.count }</Button>
+          <Button bsStyle="primary" bsSize="xsmall">{ req.priority }</Button>
         </div>
       </div>
     );
   }
 
-  renderProfileList() {
-    const searchObj = this.props.clicks;
-    const users = [];
+  renderRequestList() {
+    const searchObj = this.props.requests;
+    const reqs = [];
     for (const key in searchObj) {
       if (searchObj.hasOwnProperty(key)) {
-        users.push(searchObj[key]);
+        reqs.push(searchObj[key]);
       }
     }
 
-    return users.map((user) => {
+    return reqs.map((req) => {
       const styles = { padding: '5px'};
       return (
-        <ListGroupItem style={styles} key={ user.id_str }>{ this.renderProfile(user) }</ListGroupItem>
+        <ListGroupItem style={styles} key={ req.uid }>{ this.renderProfile(req) }</ListGroupItem>
       );
     });
   }
@@ -75,7 +77,7 @@ export default class Report extends Component {
     return (
       <div className={styles.profilesContainer}>
         <ListGroup className={styles.profilesListGroup}>
-          { this.renderProfileList() }
+          { this.renderRequestList() }
         </ListGroup>
       </div>
     );
