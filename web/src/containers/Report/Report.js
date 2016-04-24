@@ -46,7 +46,7 @@ export default class Report extends Component {
           <span>
             <div style={{padding: '0 10px', 'fontWeight': '600'}}>{ req.title }</div>
             <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ req.product }</div>
-            <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ req.ticketUrl }</div>
+            <div style={{padding: '0 10px', 'fontSize': '10px'}}><a href={ req.ticketUrl }>{ req.ticketUrl }</a></div>
           </span>
         </div>
         <div>
