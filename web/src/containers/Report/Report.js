@@ -39,6 +39,7 @@ export default class Report extends Component {
   }
 
   renderProfile(req) {
+    const date = new Date(parseInt(req.date, 10));
     return (
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <div style={{display: 'flex', justifyContent: 'flex-start'}}>
@@ -47,6 +48,9 @@ export default class Report extends Component {
             <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ req.product }</div>
             <div style={{padding: '0 10px', 'fontSize': '10px'}}>{ req.ticketUrl }</div>
           </span>
+        </div>
+        <div>
+          { date.toLocaleDateString() }
         </div>
         <div style={{height: '100%', justifySelf: 'flex-end'}}>
           <Button bsStyle="primary" bsSize="xsmall">{ req.priority }</Button>
@@ -83,3 +87,4 @@ export default class Report extends Component {
     );
   }
 }
+// { `Client ${this.props.params.id} Feature Requests`}

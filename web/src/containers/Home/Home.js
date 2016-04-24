@@ -139,8 +139,6 @@ export default class Home extends Component {
         date: this.state.dateValue,
         ticketUrl: this.state.ticketUrlValue
       };
-      // TODO post action here
-      console.log(formData);
       this.props.postRequest(formData);
     } else {
       this.setState({
