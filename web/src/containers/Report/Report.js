@@ -34,8 +34,20 @@ export default class Report extends Component {
     super(props);
 
     this.state = {
-      requests: []
+      requests: this.props.requests
     };
+  }
+
+  componentWillMount() {
+    this.setState({
+      requests: this.props.requests
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      requests: nextProps.requests
+    });
   }
 
   renderProfile(req) {
@@ -60,7 +72,7 @@ export default class Report extends Component {
   }
 
   renderRequestList() {
-    const searchObj = this.props.requests;
+    const searchObj = this.state.requests;
     const reqs = [];
     for (const key in searchObj) {
       if (searchObj.hasOwnProperty(key)) {
