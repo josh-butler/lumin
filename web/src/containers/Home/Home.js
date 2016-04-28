@@ -140,7 +140,9 @@ export default class Home extends Component {
         ticketUrl: this.state.ticketUrlValue
       };
       this.props.postRequest(formData);
-      this.props.pushState(`/report/${this.state.clientValue}`);
+      setTimeout(() => {
+        this.props.pushState(`/report/${this.state.clientValue}`);
+      }, 1000);
     } else {
       this.setState({
         titleBsStyle: this.state.titleIsValid ? 'success' : 'error',

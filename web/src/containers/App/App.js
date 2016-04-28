@@ -1,14 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import { IndexLink } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
-// import { routeActions } from 'react-router-redux';
 import config from '../../config';
 
-// pushState: PropTypes.func.isRequired
+
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired
@@ -39,16 +38,18 @@ export default class App extends Component {
               <LinkContainer to="/">
                 <NavItem eventKey={2}>New Request</NavItem>
               </LinkContainer>
-              <LinkContainer to="/report/a">
-                <NavItem eventKey={3}>Client A</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/report/b">
-                <NavItem eventKey={3}>Client B</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/report/c">
-                <NavItem eventKey={3}>Client C</NavItem>
-              </LinkContainer>
               <NavItem eventKey={4} target="_blank" href="https://www.linkedin.com/in/joshua-butler-b2151b98">About Us</NavItem>
+              <div style={{display: 'flex', height: '50px', alignItems: 'center'}}>
+                <div style={{padding: '0 10px', 'fontWeight': '600'}}>
+                  <Link to="/report/a">Client A</Link>
+                </div>
+                <div style={{padding: '0 10px', 'fontWeight': '600'}}>
+                  <Link to="/report/b">Client B</Link>
+                </div>
+                <div style={{padding: '0 10px', 'fontWeight': '600'}}>
+                  <Link to="/report/c">Client C</Link>
+                </div>
+              </div>
             </Nav>
             <Nav navbar pullRight>
               <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/josh-butler/lumin">
